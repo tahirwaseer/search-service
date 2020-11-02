@@ -9,7 +9,7 @@ The service communicates over http requests.
 ## Getting started
 - Clone the repository
 ```
-git clone --depth=1 https://github.com/Microsoft/TypeScript-Node-Starter.git <project_name>
+git clone --depth=1 https://github.com/tahirwaseer/search-service.git <project_name>
 ```
 
 There are two ways to start this application;
@@ -50,10 +50,10 @@ Once the server setup is complete and running, you can start testing the service
 Service responds to both `GET` and `POST` requests on `http://localhost:3000/search`.
 
 ### GET request
-In order to send a get request to service, ´service_name´ and ´geo_location´ are required as query parameters.
+In order to send a get request to service, `serviceName` and `geoLocation` are required as query parameters.
 For example;
 ````
-GET http://localhost:3000/search?service_name=Svenk&geo_location=59.40411099999999,18.109118499999962
+GET http://localhost:3000/search?serviceName=Svenk&geoLocation=59.40411099999999,18.109118499999962
 ````
 The service would respond with relative results ;
 
@@ -76,22 +76,22 @@ The service would respond with relative results ;
 }
 ````
 ### POST request
-In order to send a get request to service, ´service_name´ and ´geo_location´ are required in request body.
+In order to send a get request to service, `serviceName` and `geoLocation` are required in request body.
 For example;
 ````
-POST http://localhost:3000/search?service_name=Svensk&geo_location=59.40411099999999,18.109118499999962
+POST http://localhost:3000/search?serviceName=Svensk&geoLocation=59.40411099999999,18.109118499999962
 
-Request Body => { service_name: "Svensk", geo_location: "59.40411099999999,18.109118499999962"}
+Request Body => { serviceName: "Svensk", geoLocation: "59.40411099999999,18.109118499999962"}
 ````
 Similar response is returned in this case as well.
 
 ## Matching and score algorithm
-For matching the service name with user input and calculating score I've used an external library [fuzzball.js](https://www.npmjs.com/package/fuzzball) which helps calculate relevancy of matched results using fuzzy string matching.
-
+For matching the service name with user input and calculating score I've used an external library [fuzzball.js](https://www.npmjs.com/package/fuzzball) which helps calculate relevancy of matched results using fuzzy string matching.<br>
+Fuzzball returns score from 0-100 but I've converted that to 0-10, where 10 is the best match and 0 is least similar to user input.
 ## Tests
 I've writted some basic test cases using [jest](https://jestjs.io/) framework. In order to run tests;
 ```
 cd <project_name>
 npm run test
 ```
-
+It produces a test report in the console with all the information about how many tests were run, passed and failed.
