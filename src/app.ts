@@ -2,7 +2,7 @@ import express from "express";
 import compression from "compression";  // compresses requests
 import bodyParser from "body-parser";
 
-import routes from './routes'
+import routes from "./routes";
 
 // Create Express server
 const app = express();
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /**
  * App routes.
  */
-app.use('/', routes)
+app.use("/", routes);
 
 
 export default app;

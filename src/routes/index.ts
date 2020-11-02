@@ -1,11 +1,11 @@
-import express from 'express'
+import express from "express";
 
-import * as SearchController from '../controllers/search-controller'
+import * as SearchController from "../controllers/search-controller";
 
-const router = express.Router()
+const router = express.Router();
 
-router.route('/search')
+router.route("/search")
   .get(SearchController.search)
-  .post(SearchController.search)
+  .post(SearchController.search);
 
-export default router
+export default router;
